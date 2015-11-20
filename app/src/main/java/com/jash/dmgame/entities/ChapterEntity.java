@@ -4,6 +4,7 @@ package com.jash.dmgame.entities;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -25,7 +26,7 @@ public class ChapterEntity {
     private Date sendDate;
     @SerializedName("typeid")
     private long typeId;
-
+    private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public ChapterEntity() {
     }
 
@@ -97,6 +98,10 @@ public class ChapterEntity {
 
     public void setTypeId(long typeId) {
         this.typeId = typeId;
+    }
+
+    public String getDateFormat(){
+        return FORMAT.format(sendDate);
     }
 
 }

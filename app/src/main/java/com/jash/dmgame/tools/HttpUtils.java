@@ -33,8 +33,13 @@ public class HttpUtils {
     }
     public interface GameService{
         @GET("/sitemap/api.php?paging=1")
-        Call<ChapterResult> getChapterList(@Query("row") int row, @Query("page") int page, @Query("typeid") int typeId);
+        Call<ChapterResult> getChapterList(@Query("row") int row, @Query("page") int page, @Query("typeid") long typeId);
     }
+
+    public static GameService getService() {
+        return service;
+    }
+
     private static class CustomDateTypeAdapter extends TypeAdapter<Date>{
 
         @Override
@@ -51,7 +56,7 @@ public class HttpUtils {
             if (in.peek() == JsonToken.NULL) {
                 return null;
             } else {
-                return new Date(in.nextLong());
+                return new Date(in.nextLong() * 1000);
             }
         }
     }
