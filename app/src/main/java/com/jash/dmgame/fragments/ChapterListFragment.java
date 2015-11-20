@@ -1,19 +1,26 @@
 package com.jash.dmgame.fragments;
 
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jash.dmgame.BR;
 import com.jash.dmgame.R;
+import com.jash.dmgame.activities.ChapterContentActivity;
 import com.jash.dmgame.adapters.BindingAdapter;
 import com.jash.dmgame.dao.ChapterEntityDao;
 import com.jash.dmgame.dao.DaoSession;
 import com.jash.dmgame.dao.TypeEntityDao;
+import com.jash.dmgame.databinding.ChapterItemBinding;
 import com.jash.dmgame.entities.ChapterEntity;
 import com.jash.dmgame.entities.TypeEntity;
 import com.jash.dmgame.tools.ChapterResult;
@@ -33,7 +40,7 @@ import retrofit.Retrofit;
  * A simple {@link Fragment} subclass.
  *
  */
-public class ChapterListFragment extends Fragment implements Callback<ChapterResult> {
+public class ChapterListFragment extends Fragment implements Callback<ChapterResult>, View.OnClickListener {
 
 
     private static final String TYPE_ID = "TYPE_ID";
@@ -65,6 +72,7 @@ public class ChapterListFragment extends Fragment implements Callback<ChapterRes
         chapterDao = session.getChapterEntityDao();
         type = typeDao.queryBuilder().where(TypeEntityDao.Properties.Id.eq(typeId)).build().list().get(0);
         adapter = new BindingAdapter<>(new ArrayList<ChapterEntity>(), R.layout.chapter_item, BR.chapter);
+        adapter.setOnClickListener(this);
     }
 
     @Override
@@ -111,5 +119,16 @@ public class ChapterListFragment extends Fragment implements Callback<ChapterRes
     public void onFailure(Throwable t) {
         refresh.setRefreshing(false);
         t.printStackTrace();
+    }
+
+    @Override
+    public void onClick(View v) {
+        ChapterItemBinding bind = DataBindingUtil.getBinding(v);
+        ChapterEntity chapter = bind.getChapter();
+        Toast.makeText(getActivity(), chapter.getTitle(), Toast.LENGTH_SHORT).show();
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), v, getString(R.string.chapter_transition));
+        Intent intent = new Intent(getContext(), ChapterContentActivity.class);
+        intent.putExtra("chapterId", chapter.getId());
+        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
     }
 }

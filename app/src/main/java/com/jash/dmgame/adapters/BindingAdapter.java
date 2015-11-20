@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Collection;
@@ -17,6 +18,7 @@ public class BindingAdapter<T> extends RecyclerView.Adapter<BindingAdapter.Bindi
     private List<T> list;
     private int item_layout;
     private int variable_id;
+    private View.OnClickListener onClickListener;
 
     public BindingAdapter(List<T> list, int item_layout, int variable_id) {
         this.list = list;
@@ -27,6 +29,7 @@ public class BindingAdapter<T> extends RecyclerView.Adapter<BindingAdapter.Bindi
     @Override
     public BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), item_layout, parent, false);
+        binding.getRoot().setOnClickListener(onClickListener);
         return new BindingHolder(binding);
     }
 
@@ -40,11 +43,16 @@ public class BindingAdapter<T> extends RecyclerView.Adapter<BindingAdapter.Bindi
         return list.size();
     }
 
+    public void setOnClickListener(View.OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
     public void addAll(Collection<? extends T> collection){
         int size = list.size();
         list.addAll(collection);
         notifyItemRangeInserted(size, collection.size());
     }
+
     public void clear(){
         int size = list.size();
         list.clear();

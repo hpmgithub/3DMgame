@@ -6,6 +6,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
+import com.jash.dmgame.entities.ChapterEntity;
 
 import java.io.IOException;
 import java.util.Date;
@@ -34,6 +35,8 @@ public class HttpUtils {
     public interface GameService{
         @GET("/sitemap/api.php?paging=1")
         Call<ChapterResult> getChapterList(@Query("row") int row, @Query("page") int page, @Query("typeid") long typeId);
+        @GET("/sitemap/api.php")
+        Call<ChapterEntity> getChapterContent(@Query("id") long id, @Query("typeid") long typeId);
     }
 
     public static GameService getService() {
