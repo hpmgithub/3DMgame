@@ -22,7 +22,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/main_contaner"/>
+                android:id="@+id/main_container"/>
             <android.support.design.widget.NavigationView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

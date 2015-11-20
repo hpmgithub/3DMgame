@@ -7,7 +7,7 @@
     </group>
     <item android:title="设置">
         <menu>
-            <item android:title="设置" android:id="@+id/nav_string" android:icon="@android:drawable/ic_menu_preferences"/>
+            <item android:title="设置" android:id="@+id/nav_setting" android:icon="@android:drawable/ic_menu_preferences"/>
             <item android:title="退出" android:id="@+id/nav_exit" android:icon="@android:drawable/ic_btn_speak_now"/>
         </menu>
     </item>
