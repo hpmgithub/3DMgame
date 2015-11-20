@@ -3,6 +3,7 @@ package com.jash.dmgame;
 import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.jash.dmgame.tools.DaoUtils;
 
 /**
  * Created by jash
@@ -14,5 +15,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
+        DaoUtils.initialize(this);
     }
 }
