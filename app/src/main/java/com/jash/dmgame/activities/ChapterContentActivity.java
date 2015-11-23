@@ -39,7 +39,7 @@ public class ChapterContentActivity extends AppCompatActivity implements Callbac
         }
         long chapterId = getIntent().getLongExtra("chapterId", -1);
         chapterDao = DaoUtils.getSession().getChapterEntityDao();
-        ChapterEntity chapter = chapterDao.queryBuilder().where(ChapterEntityDao.Properties.Id.eq(chapterId)).build().list().get(0);
+        ChapterEntity chapter = chapterDao.load(chapterId);
         setTitle(chapter.getTitle());
         web = (WebView) findViewById(R.id.chapter_content_web);
         if (!TextUtils.isEmpty(chapter.getBody())) {

@@ -70,7 +70,7 @@ public class ChapterListFragment extends Fragment implements Callback<ChapterRes
         DaoSession session = DaoUtils.getSession();
         TypeEntityDao typeDao = session.getTypeEntityDao();
         chapterDao = session.getChapterEntityDao();
-        type = typeDao.queryBuilder().where(TypeEntityDao.Properties.Id.eq(typeId)).build().list().get(0);
+        type = typeDao.load(typeId);
         adapter = new BindingAdapter<>(new ArrayList<ChapterEntity>(), R.layout.chapter_item, BR.chapter);
         adapter.setOnClickListener(this);
     }
