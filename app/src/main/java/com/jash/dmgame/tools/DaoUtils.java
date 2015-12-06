@@ -36,16 +36,16 @@ public class DaoUtils {
         public void onCreate(SQLiteDatabase db) {
             super.onCreate(db);
             TypeEntityDao typeDao = new DaoMaster(db).newSession().getTypeEntityDao();
-            typeDao.insertOrReplace(new TypeEntity(1l, "文章首页"));
-            typeDao.insertOrReplace(new TypeEntity(2l, "游戏新闻"));
-            typeDao.insertOrReplace(new TypeEntity(151l, "游戏杂谈"));
-            typeDao.insertOrReplace(new TypeEntity(152l, "硬件信息"));
-            typeDao.insertOrReplace(new TypeEntity(153l, "游戏前瞻"));
-            typeDao.insertOrReplace(new TypeEntity(154l, "游戏评测"));
-            typeDao.insertOrReplace(new TypeEntity(194l, "原创精品"));
-            typeDao.insertOrReplace(new TypeEntity(197l, "游戏盘点"));
-            typeDao.insertOrReplace(new TypeEntity(199l, "时事焦点"));
-            typeDao.insertOrReplace(new TypeEntity(25l, "攻略中心"));
+            typeDao.insertOrReplace(new TypeEntity(1L, "文章首页"));
+            typeDao.insertOrReplace(new TypeEntity(2L, "游戏新闻"));
+            typeDao.insertOrReplace(new TypeEntity(151L, "游戏杂谈"));
+            typeDao.insertOrReplace(new TypeEntity(152L, "硬件信息"));
+            typeDao.insertOrReplace(new TypeEntity(153L, "游戏前瞻"));
+            typeDao.insertOrReplace(new TypeEntity(154L, "游戏评测"));
+            typeDao.insertOrReplace(new TypeEntity(194L, "原创精品"));
+            typeDao.insertOrReplace(new TypeEntity(197L, "游戏盘点"));
+            typeDao.insertOrReplace(new TypeEntity(199L, "时事焦点"));
+            typeDao.insertOrReplace(new TypeEntity(25L, "攻略中心"));
         }
     }
 }

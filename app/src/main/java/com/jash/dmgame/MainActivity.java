@@ -1,28 +1,20 @@
 package com.jash.dmgame;
 
-import android.app.Activity;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.jash.dmgame.databinding.NavHeaderBinding;
 import com.jash.dmgame.fragments.ChapterFragment;
 import com.jash.dmgame.fragments.ForumFragment;
@@ -60,6 +52,7 @@ public class MainActivity extends AppCompatActivity
                 .detach(game)
                 .detach(chapter)
                 .attach(chapter).commit();
+        Bitmap bitmap;
     }
 
     @Override
@@ -91,7 +84,6 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
         transaction.commit();
-//
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
