@@ -1,6 +1,5 @@
 package com.jash.dmgame;
 
-import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,10 +11,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 
-import com.jash.dmgame.databinding.NavHeaderBinding;
 import com.jash.dmgame.fragments.ChapterFragment;
 import com.jash.dmgame.fragments.ForumFragment;
 import com.jash.dmgame.fragments.GameFragment;
@@ -86,10 +83,5 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-    @BindingAdapter("bind:header")
-    public static void loadHeader(NavigationView view, int id){
-        NavHeaderBinding inflate = DataBindingUtil.inflate(LayoutInflater.from(view.getContext()), id, view, false);
-        view.addHeaderView(inflate.getRoot());
     }
 }
