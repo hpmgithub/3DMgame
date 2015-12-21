@@ -4,6 +4,7 @@ package com.jash.dmgame.fragments;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -45,8 +46,9 @@ public class ChapterFragment extends Fragment {
         }
         TabLayout tab = (TabLayout) view.findViewById(R.id.chapter_tab);
         ViewPager pager = (ViewPager) view.findViewById(R.id.chapter_pager);
-        List<TypeEntity> list = DaoUtils.getSession().getTypeEntityDao().queryBuilder().build().list();
+        List<TypeEntity> list = DaoUtils.getSession().getTypeEntityDao().loadAll();
         pager.setAdapter(new TypeAdapter(getChildFragmentManager(), list));
+        pager.setPageTransformer(true, (page, position) -> ViewCompat.setRotationY(page, position * 90));
         tab.setupWithViewPager(pager);
     }
 }
