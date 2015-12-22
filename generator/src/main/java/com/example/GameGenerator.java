@@ -1,9 +1,7 @@
 package com.example;
 
 import de.greenrobot.daogenerator.DaoGenerator;
-import de.greenrobot.daogenerator.DaoUtil;
 import de.greenrobot.daogenerator.Entity;
-import de.greenrobot.daogenerator.Property;
 import de.greenrobot.daogenerator.Schema;
 
 public class GameGenerator {
@@ -19,9 +17,8 @@ public class GameGenerator {
         chapter.addStringProperty("pic");
         chapter.addIntProperty("feedback");
         chapter.addStringProperty("body");
-        Property sendDate = chapter.addDateProperty("sendDate").getProperty();
-        Property typeId = chapter.addLongProperty("typeId").notNull().getProperty();
-        type.addToMany(chapter,typeId).orderDesc(sendDate);
+        chapter.addDateProperty("sendDate").getProperty();
+        chapter.addLongProperty("typeId").notNull().getProperty();
         try {
             new DaoGenerator().generateAll(schema, "app/src/main/java");
         } catch (Exception e) {

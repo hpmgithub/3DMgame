@@ -1,7 +1,6 @@
 package com.jash.dmgame;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity
                 .detach(game)
                 .detach(chapter)
                 .attach(chapter).commit();
-        Bitmap bitmap;
     }
 
     @Override

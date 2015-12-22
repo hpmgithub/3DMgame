@@ -27,8 +27,6 @@ public class TypeEntityDao extends AbstractDao<TypeEntity, Long> {
         public final static Property TypeName = new Property(1, String.class, "typeName", false, "TYPE_NAME");
     };
 
-    private DaoSession daoSession;
-
 
     public TypeEntityDao(DaoConfig config) {
         super(config);
@@ -36,7 +34,6 @@ public class TypeEntityDao extends AbstractDao<TypeEntity, Long> {
     
     public TypeEntityDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
-        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -67,12 +64,6 @@ public class TypeEntityDao extends AbstractDao<TypeEntity, Long> {
         if (typeName != null) {
             stmt.bindString(2, typeName);
         }
-    }
-
-    @Override
-    protected void attachEntity(TypeEntity entity) {
-        super.attachEntity(entity);
-        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */
